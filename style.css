@@ -1,9 +1,11 @@
-body{    
-  height: 100%;
+body,html{
+    
+    align-items: center;
+    justify-content: center;
 }
 .test-color{
     display: flex;
     align-items: center;
     justify-content: center;
-}
+} 
 
