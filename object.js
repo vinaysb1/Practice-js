@@ -19,3 +19,7 @@ class Person {
         this.age = age
     }     
 }
+function Person(firstName,age){
+    this.firstName = firstName
+    this.age = age
+}
