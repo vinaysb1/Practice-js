@@ -12,3 +12,56 @@ FROM
 WHERE
     officeCode BETWEEN 1 AND 3
 ORDER BY officeCode;
+
+SELECT
+firstName,lastName
+FROM employees
+WHERE lastName like '%son'
+ORDER by firstName;
+
+SELECT 
+    firstName, 
+    lastName, 
+    officeCode
+FROM
+    employees
+WHERE
+    officeCode in (1,2,3)
+ORDER BY 
+    officeCode;
+    
+SELECT 
+    firstName, 
+    lastName, 
+    officeCode
+FROM
+    employees
+WHERE
+reportsTO IS NULL;
+
+SELECT 
+    lastname, 
+    firstname, 
+    jobtitle
+FROM
+    employees
+WHERE
+    jobtitle <> 'Sales Rep';
+
+    SELECT 
+    lastname, 
+    firstname, 
+    officeCode
+FROM
+    employees
+WHERE 
+    officecode > 5;
+
+    SELECT 
+    lastname, 
+    firstname, 
+    officeCode
+FROM
+    employees
+WHERE 
+    officecode <= 4;
