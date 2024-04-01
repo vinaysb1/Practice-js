@@ -75,3 +75,40 @@ WHERE
 	SUM(priceEach * quantityOrdered) Total
 FROM 	orderdetails GROUP BY 	`Order no.`
 HAVING 	total > 60000;
+
+SELECT customerName,COUNT(o.orderNumber) total
+From 
+customers c 
+INNER JOIN orders o ON c.customerNumber = o.customerNumber
+GROUP BY
+customerName
+ORDER BY
+total DEsc;
+
+-- MySQL Join
+create table members(
+    member_id int AUTO_INCREMENT,
+    name varchar(100),
+    primary key (member_id)
+    );
+
+    create table committees (
+     committee_id  int AUTO_INCREMENT,
+    name varchar(100),
+    primary key ( committee_id )
+    );
+
+    INSERT INTO members(name)
+    values ('John'),('Jane'),('Mary'),('David'),('Amelia');
+
+    INSERT INTO committees(name)
+VALUES('John'),('Mary'),('Amelia'),('Joe');
+
+SELECT 
+    m.member_id, 
+    m.name AS member, 
+    c.committee_id, 
+    c.name AS committee
+FROM
+    members m
+INNER JOIN committees c USING(name);
