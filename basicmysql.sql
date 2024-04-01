@@ -65,3 +65,13 @@ FROM
     employees
 WHERE 
     officecode <= 4;
+
+    -- MySQL Aliases
+    SELECT 
+    CONCAT_WS(',',firstname,lastname) FROM employees;
+    SELECT CONCAT_WS(',',firstname,lastname) AS 'Full name' FROM employees;
+    SELECT CONCAT_WS(",",firstname,lastName) 'Full name' FROM employees ORDER BY 'Full name';
+    SELECT 	orderNumber `Order no.`,
+	SUM(priceEach * quantityOrdered) Total
+FROM 	orderdetails GROUP BY 	`Order no.`
+HAVING 	total > 60000;
