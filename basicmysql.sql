@@ -141,3 +141,33 @@ SELECT
 FROM
     members m
 RIGHT JOIN committees c on c.name = m.name;
+
+SELECT 
+    c1.city, 
+    c1.customerName, 
+    c2.customerName
+FROM
+    customers c1
+INNER JOIN customers c2 ON 
+    c1.city = c2.city
+    AND c1.customername > c2.customerName
+ORDER BY 
+    c1.city;
+
+    -- MySQL GROUP BY clause
+    select status 
+    from orders 
+    GROUP BY status;
+
+    SELECT 
+  status, 
+  COUNT(*) 
+FROM 
+  orders 
+GROUP BY 
+  status;
+
+  select status,SUM(quantityOrdered*priceEach) AS amount
+  from orders
+  INNER JOIN orderdetails using (orderNumber)
+  Group by status;
