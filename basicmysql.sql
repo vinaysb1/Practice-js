@@ -244,3 +244,12 @@ GROUP BY
 HAVING 
     status = 'Shipped' AND 
     total > 1500;
+
+    -- MySQL HAVING COUNT example
+    select
+    customerName,COUNT(*) order_count
+    from orders 
+    INNER JOIN customers using (customerNumber)
+    Group by customerName
+    HAVING COUNT(*) > 4
+    ORDER BY order_count;
