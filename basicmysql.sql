@@ -186,3 +186,17 @@ WHERE
   status = 'Shipped' 
 GROUP BY 
   YEAR(orderDate);
+
+  select
+  YEAR(orderDate) AS year,
+  SUM(quantityOrdered*priceEach) AS total
+  FROM orders
+  INNER JOIN orderdetails USING ()orderNumber
+  where
+ status = 'Shipped' 
+  GROUP BY yearHaving year > 2003;
+
+  SELECT year(orderDate) AS year,status,SUM(quantityOrdered*priceEach) AS total
+  from orders INNER JOIN orderdetails USING (orderNumber)
+  Group by year,status
+  order by year;
