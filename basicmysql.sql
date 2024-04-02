@@ -200,3 +200,21 @@ GROUP BY
   from orders INNER JOIN orderdetails USING (orderNumber)
   Group by year,status
   order by year;
+
+--   MySQL HAVING clause examples
+SELECT orderNumber,
+SUM(quantityOrdered) AS itemsCount,SUM(priceEach*quantityOrdered) AS total
+from orderdetails
+GROUP BY
+orderNumber;
+
+SELECT 
+  ordernumber, 
+  SUM(quantityOrdered) AS itemsCount, 
+  SUM(priceeach * quantityOrdered) AS total 
+FROM 
+  orderdetails 
+GROUP BY 
+  ordernumber 
+HAVING 
+  total > 1000;
