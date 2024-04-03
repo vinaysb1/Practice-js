@@ -253,3 +253,21 @@ HAVING
     Group by customerName
     HAVING COUNT(*) > 4
     ORDER BY order_count;
+
+    -- MySQL ROLLUP 
+    SELECT 
+    productline, 
+    SUM(orderValue) totalOrderValue
+FROM
+    sales
+GROUP BY 
+    productline;
+
+    -- MySQL Subquery
+    SELECT lastName,firstName
+    From employees WHERE officeCode IN (SELECT
+   officeCode FROM offices where country = 'USA' );
+
+   SELECT customerNumber,checkNumber,amount
+   FROM payments
+   WHERE amount = (SELECT MAX(amount) from payments );
