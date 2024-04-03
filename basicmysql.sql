@@ -275,3 +275,11 @@ GROUP BY
    select customerNumber,checkNumber,amount
    from payments
    where amount > (select avg(amount) from payments);
+
+--    MySQL subquery with IN and NOT IN operators
+select customerName
+from customers 
+where customerNumber NOT IN
+(select DISTINCT customerNumber FROM orders);
+
+-- MySQL subquery in the FROM clause
