@@ -286,3 +286,8 @@ where customerNumber NOT IN
 SELECT MAX(items),MIN(items),Floor(AVG(items))
 FROM (select orderNumber,count(orderNumber) AS items
 from orderdetails group by orderNumber) AS lineitems;
+
+select productname,buyprice
+from products p1
+where buyprice > (SELECT AVG(buyprice)
+from products where productline = p1.productline);
