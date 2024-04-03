@@ -271,3 +271,7 @@ GROUP BY
    SELECT customerNumber,checkNumber,amount
    FROM payments
    WHERE amount = (SELECT MAX(amount) from payments );
+
+   select customerNumber,checkNumber,amount
+   from payments
+   where amount > (select avg(amount) from payments);
