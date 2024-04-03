@@ -283,3 +283,6 @@ where customerNumber NOT IN
 (select DISTINCT customerNumber FROM orders);
 
 -- MySQL subquery in the FROM clause
+SELECT MAX(items),MIN(items),Floor(AVG(items))
+FROM (select orderNumber,count(orderNumber) AS items
+from orderdetails group by orderNumber) AS lineitems;
