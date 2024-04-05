@@ -419,3 +419,18 @@ INSERT INTO t2 VALUES (2),(3),(4);
 
 select id from t1 UNION select id from t2;  
 select id from t1 UNION ALL select id from t2;
+
+SELECT firstName,lastName 
+from employees UNION
+select contactFirstName,contactLastName from customers;
+
+select concat(firstName,' ',lastName) fullname
+from employees UNION select
+concat (contactFirstName, ' ',contactLastName)
+from customers;
+
+-- MySQL EXCEPT operator examples
+select id from t1 EXCEPT select id from t2;
+
+select firstName from employees 
+except select contactFirstName from customers;
