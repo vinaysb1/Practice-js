@@ -308,3 +308,114 @@ WHERE
             customerNumber = customers.customerNumber
         GROUP BY orderNumber
         HAVING SUM(priceEach * quantityOrdered) > 60000);
+
+        --  MySQL Derived Table example
+        SELECT productcode,ROUND(SUM(quantityOrdered*priceEach)) sales
+        FROM orderdetails INNER JOIN orders USING (orderNumber)
+        WHERE year(shippedDate) = 2003
+        group by productcode
+        order by sales DESC 
+        limit 5;
+
+        SELECT productName,sales 
+        FROM (SELECT productcode, ROUND(SUM(quantityOrdered*priceEach)) sales
+        FROM orderdetails INNER JOIN orders USING (orderNumber)
+        WHERE year(shippedDate) = 2003
+        group by productcode
+        order by sales DESC 
+        limit 5) top5products2003
+        INNER JOIN products USING (producyCode);
+
+        -- Suppose you have to classify the customers who bought products in 2003 into 3 groups: platinum, gold, and silver. And you need to know the number of customers in each group with the following conditions:
+
+-- Platinum customers who have orders with a volume greater than 100K.
+-- Gold customers who have orders with a volume between 10K and 100K.
+-- Silver customers who have orders with a volume of less than 10K.
+
+SELECT customerNumber,
+ROUND(SUM(quantityOrdered*priceEach)) sales,
+(CASE 
+WHEN SUM(quantityOrdered*priceEach)<10000 then 'silver'
+WHEN SUM(quantityOrdered*priceEach) between 10000 and 100000 then 'silver'
+WHEN SUM(quantityOrdered*priceEach ) > 100000 then 'platinum'
+END) customerGroup
+FROM
+orderdetails
+INNER JOIN
+orders USING (orderNumber)
+WHERE year(shippedDate) = 2003
+GROUP BY customerNumber;
+
+-- Then, you can use this query as the derived table and perform grouping as follows:
+
+select customerGroup,count(cg.customerGroup) as groupCount
+from (SELECT customerNumber,
+ROUND(SUM(quantityOrdered*priceEach)) sales,
+(CASE 
+WHEN SUM(quantityOrdered*priceEach)<10000 then 'silver'
+WHEN SUM(quantityOrdered*priceEach) between 10000 and 100000 then 'silver'
+WHEN SUM(quantityOrdered*priceEach ) > 100000 then 'platinum'
+END) customerGroup
+FROM
+orderdetails
+INNER JOIN
+orders USING (orderNumber)
+WHERE year(shippedDate) = 2003
+GROUP BY customerNumber) cg
+GROUP BY cg.customerGroup;
+
+-- MySQL UPDATE EXISTS examples
+SELECT employeenumber,firstname,lastname,extension
+from employees
+where
+EXISTS(select 1 from offices
+where city = 'San Francisco' and
+offices.officeCode = employees.officeCode);
+
+-- MySQL INSERT EXISTS example
+INSERT INTO customers_archive
+SELECT * 
+FROM customers
+WHERE NOT EXISTS( 
+   SELECT 1
+   FROM
+       orders
+   WHERE
+       orders.customernumber = customers.customernumber
+);
+-- MySQL DELETE EXISTS example
+
+DELETE FROM customers
+WHERE EXISTS( 
+    SELECT 
+        1
+    FROM
+        customers_archive a
+    
+    WHERE
+        a.customernumber = customers.customerNumber);
+
+
+        select customerNumber,checkNumber,(quantityOrdered*priceEach) total
+        from customertable
+        (select orderNumber,orderdetails
+        from ordertable)
+        c.customerNumber=o.customerNumber
+
+        -- MySQL UNION operator
+        DROP TABLE IF EXISTS t1;
+DROP TABLE IF EXISTS t2;
+
+CREATE TABLE t1 (
+    id INT PRIMARY KEY
+);
+
+CREATE TABLE t2 (
+    id INT PRIMARY KEY
+);
+
+INSERT INTO t1 VALUES (1),(2),(3);
+INSERT INTO t2 VALUES (2),(3),(4);
+
+select id from t1 UNION select id from t2;  
+select id from t1 UNION ALL select id from t2;
