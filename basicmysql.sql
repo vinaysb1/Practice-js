@@ -437,3 +437,10 @@ except select contactFirstName from customers;
 
 select firstName from employees 
 except select contactFirstName from customers order by firstName;
+
+-- MySQL INTERSECT operator example
+select id from t1 INTERSECT select id from t2;
+
+-- practical MySQL INTERSECT example
+select firstName from employees
+INTERSECT select contactFirstName from customers;
