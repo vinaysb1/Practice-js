@@ -434,3 +434,6 @@ select id from t1 EXCEPT select id from t2;
 
 select firstName from employees 
 except select contactFirstName from customers;
+
+select firstName from employees 
+except select contactFirstName from customers order by firstName;
