@@ -456,3 +456,11 @@ CREATE TABLE contacts(
     name varchar(255) not NULL,
     email varchar(320) not NULL
 );
+INSERT INTO contacts(name, email)
+VALUES('John Doe', 'john.doe@mysqltutorial.org');
+
+ALTER table contacts add adress varchar(255);
+
+UPDATE contacts set adress = 'dwd' where id = 1;
+
+alter table contacts drop column adress;
