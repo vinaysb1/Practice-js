@@ -444,3 +444,15 @@ select id from t1 INTERSECT select id from t2;
 -- practical MySQL INTERSECT example
 select firstName from employees
 INTERSECT select contactFirstName from customers;
+
+--  INTERSECT operator with ORDER BY clause
+select firstName from employees
+INTERSECT select contactFirstName
+from customers order by firstName;
+
+-- MySQL AUTO_INCREMENT attribute
+CREATE TABLE contacts(
+    id INT AUTO_INCREAMENT PRIMARY KEY,
+    name varchar(255) not NULL,
+    email varchar(320) not NULL
+);
