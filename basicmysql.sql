@@ -518,3 +518,33 @@ FROM
 
 alter table posts drop column excerpt;
 alter table posts drop column created_at,drop column updated_at;
+
+--  PRIMARY KEY examples
+create table products(
+    id int primary key,name varchar(200) naot null);
+
+insert into products(id,name)
+values(1,'Laptop'),(2,'Smartphone'),(3,'Headphone');
+
+drop table products;
+
+create table products (name) 
+values ('laptop'),('smartphone'),('headphone');
+
+CREATE TABLE customers(
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    first_name VARCHAR(255) NOT NULL,
+    last_name VARCHAR(255) NOT NULL,
+    email VARCHAR(255) NOT NULL
+);
+CREATE TABLE faviorites(
+    customer_id INT,
+    product_id INT,
+    favorite_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    PRIMARY KEY(customer_id, product_id)
+);
+--  Adding a primary key to a table example
+create table tags(id int,name varchar(30) not null);
+
+ALTER TABLE tags
+ADD PRIMARY KEY(id);
