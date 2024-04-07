@@ -464,3 +464,45 @@ ALTER table contacts add adress varchar(255);
 UPDATE contacts set adress = 'dwd' where id = 1;
 
 alter table contacts drop column adress;
+
+-- RENAME TABLE examples
+CREATE DATABASE IF NOT EXISTS hr;
+
+CREATE TABLE departments(
+    department_id INT AUTO_INCREAMENT PRIMARY KEY,
+    dept_name VARCHAR(100) NOT NULL
+);
+
+craeate table employee(
+    id int AUTO_INCREAMENT primary key,
+    first_name varchar(50) not null,
+    last_name varchar(50) not null,
+    department_id int not null,
+    foreign key(department_id)
+    references departments(department_id)
+)
+
+insert into departments(dept_name) values ('sales'),('Marketing'),('Finance'),('Accounting'),('Warehouses'),('Production');
+INSERT INTO employees(
+  first_name, last_name, department_id
+) 
+VALUES 
+  ('John', 'Doe', 1), 
+  ('Bush', 'Lily', 2), 
+  ('David', 'Dave', 3), 
+  ('Mary', 'Jane', 4), 
+  ('Jonatha', 'Josh', 5), 
+  ('Mateo', 'More', 1);
+
+  SELECT 
+    id, first_name, last_name, department_id
+FROM
+    employees;
+
+    create view v_employee_info as 
+    select id,first_name,last_name,dept_name from employees
+    inner join departments using(department_id);
+
+    SELECT * FROM v_employee_info;
+
+    -- MySQL DROP COLUMN examples
