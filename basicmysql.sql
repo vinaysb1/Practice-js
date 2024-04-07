@@ -506,3 +506,15 @@ FROM
     SELECT * FROM v_employee_info;
 
     -- MySQL DROP COLUMN examples
+
+    CREATE TABLE posts (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    title VARCHAR(255) NOT NULL,
+    excerpt VARCHAR(400),
+    content TEXT,
+    created_at DATETIME,
+    updated_at DATETIME
+);
+
+alter table posts drop column excerpt;
+alter table posts drop column created_at,drop column updated_at;
