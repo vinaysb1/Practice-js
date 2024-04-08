@@ -548,3 +548,25 @@ create table tags(id int,name varchar(30) not null);
 
 ALTER TABLE tags
 ADD PRIMARY KEY(id);
+
+-- MySQL TIMESTAMP Data Type
+CREATE TABLE categories (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(255) NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+INSERT INTO categories(name) 
+VALUES ('A');
+SELECT * FROM categories;
+
+alter table categories add column updated_at
+TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+on update CURRENT_TIMESTAMP;
+insert into categories(name) values ('b');
+SELECT * FROM categories;
+
+update categories set name = 'B+' where id = 2;
+SELECT *
+FROM categories
+WHERE id = 2;
