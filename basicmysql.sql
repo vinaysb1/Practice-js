@@ -592,3 +592,15 @@ values(now(),now());
 select ts,dt from timestamp_n_datetime;
 set time_zone = '+05:00';
 select ts,dt from timestamp_n_datetime;
+
+-- MySQL TIME function
+SELECT TIME(@dt);
+SELECT 
+    HOUR(@dt),
+    MINUTE(@dt),
+    SECOND(@dt),
+    DAY(@dt),
+    WEEK(@dt),
+    MONTH(@dt),
+    QUARTER(@dt),
+    YEAR(@dt);
