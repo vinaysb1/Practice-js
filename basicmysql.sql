@@ -570,3 +570,25 @@ update categories set name = 'B+' where id = 2;
 SELECT *
 FROM categories
 WHERE id = 2;
+
+-- MySQL DATETIME data type
+create table events(
+    id int AUTO_INCREMENT key,
+    event_name varchar(255) not null,
+    started_at DATETIME not null DEFAULT CURRENT_TIMESTAMP
+);
+INSERT INTO events(event_name)
+VALUES('Connected to MySQL Server');
+SELECT * FROM events;
+
+CREATE TABLE timestamp_n_datetime (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    ts TIMESTAMP,
+    dt DATETIME
+);
+
+insert into timestamp_n_datetime(ts,dt)
+values(now(),now());
+select ts,dt from timestamp_n_datetime;
+set time_zone = '+05:00';
+select ts,dt from timestamp_n_datetime;
