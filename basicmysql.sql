@@ -624,3 +624,17 @@ SELECT
        DATE_SUB(@dt, INTERVAL 1 WEEK) '1 week before',
        DATE_SUB(@dt, INTERVAL 1 MONTH) '1 month before',
        DATE_SUB(@dt, INTERVAL 1 YEAR) '1 year before';
+
+
+-- JSON data type example
+create table products1(
+    id int AUTO_INCREMENT primary key,
+    name varchar(25) not null,
+    price decimal(10,2) not null,
+    properties JSON );
+
+    INSERT INTO products1(name, price, properties)
+VALUES('T-Shirt', 25.99, '{"sizes":["S","M","L","XL"], "colors": ["white","black"]}');
+
+select name,properties from products1;
+select json_extract(properties,"$.colors[0]") from products1;
