@@ -663,3 +663,9 @@ FROM
     );
     insert into events(event_name,event_time)
     values('mysqltutorial','2024-04-10  19:30:35');
+
+    insert into events(event_name,event_time)
+    values('workshop',NOw());
+-- Inserting a datetime string example
+INSERT INTO events (event_name, event_time)
+VALUES ('MySQL Party', STR_TO_DATE('10/28/2023 20:00:00', '%m/%d/%Y %H:%i:%s'));
