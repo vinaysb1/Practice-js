@@ -638,3 +638,28 @@ VALUES('T-Shirt', 25.99, '{"sizes":["S","M","L","XL"], "colors": ["white","black
 
 select name,properties from products1;
 select json_extract(properties,"$.colors[0]") from products1;
+
+CREATE TABLE customers (
+    id BINARY(16) PRIMARY KEY,
+    name VARCHAR(255)
+);
+
+INSERT INTO customers(id, name)
+VALUES(UUID_TO_BIN(UUID()),'John Doe'),
+      (UUID_TO_BIN(UUID()),'Will Smith'),
+      (UUID_TO_BIN(UUID()),'Mary Jane');
+
+      SELECT 
+    BIN_TO_UUID(id) id, 
+    name
+FROM
+    customers;  
+
+    -- Inserting a datetime value example
+    create table events(
+        id int AUTO_INCREMENT primary key,
+        event_name varchar(255) not null,
+        event_time datetime not null
+    );
+    insert into events(event_name,event_time)
+    values('mysqltutorial','2024-04-10  19:30:35');
