@@ -669,3 +669,12 @@ FROM
 -- Inserting a datetime string example
 INSERT INTO events (event_name, event_time)
 VALUES ('MySQL Party', STR_TO_DATE('10/28/2023 20:00:00', '%m/%d/%Y %H:%i:%s'));
+
+-- Inserting the current date
+CREATE TABLE events(
+   id INT AUTO_INCREMENT PRIMARY KEY,
+   event_name VARCHAR(255) NOT NULL,
+   event_date DATE NOT NULL
+);
+insert into events(event_name,event_date)
+values('myswl workshop ',current_date);
