@@ -714,3 +714,23 @@ VALUES
 update employees
 inner join merits on employees.performane = merits.performance
 set salary = salary+salary*percentage;
+
+-- MySQL UPDATE JOIN example with LEFT JOIN
+TRUNCATE TABLE employees;
+
+INSERT INTO employees(emp_name, performance, salary) 
+VALUES 
+  ('Mary Doe', 1, 50000), 
+  ('Cindy Smith', 3, 65000), 
+  ('Sue Greenspan', 4, 75000), 
+  ('Grace Dell', 5, 125000), 
+  ('Nancy Johnson', 3, 85000), 
+  ('John Doe', 2, 45000), 
+  ('Lily Bush', 3, 55000),
+  ('Jack William', NULL, 43000), 
+  ('Ricky Bond', NULL, 52000);
+
+  update employees
+  left join merits on employees.performance = merits.performance
+  set salary = salary+salary*coalesce(percentage,0.015);
+  SELECT * FROM employees;
