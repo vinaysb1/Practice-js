@@ -678,3 +678,39 @@ CREATE TABLE events(
 );
 insert into events(event_name,event_date)
 values('myswl workshop ',current_date);
+
+-- MySQL UPDATE JOIN examples
+use hr;
+create table merits(    
+    performance int primary key,
+    percentage dec(11,2) not null);
+
+    create table employees (
+        emp_id int AUTO_INCREMENT primary key,
+        emp_name varchar(255) not null,
+        performance int DEFAULT  null,
+        salary dec(11,2) DEFAULT null,
+        foreign key(performance) references merits (performance)
+    );
+    
+INSERT INTO merits(performance, percentage) 
+VALUES 
+  (1, 0), 
+  (2, 0.01), 
+  (3, 0.03), 
+  (4, 0.05), 
+  (5, 0.08);
+  INSERT INTO employees(emp_name, performance, salary) 
+VALUES 
+  ('Mary Doe', 1, 50000), 
+  ('Cindy Smith', 3, 65000), 
+  ('Sue Greenspan', 4, 75000), 
+  ('Grace Dell', 5, 125000), 
+  ('Nancy Johnson', 3, 85000), 
+  ('John Doe', 2, 45000), 
+  ('Lily Bush', 3, 55000);
+
+--   MySQL UPDATE JOIN example with INNER JOIN clause
+update employees
+inner join merits on employees.performane = merits.performance
+set salary = salary+salary*percentage;
