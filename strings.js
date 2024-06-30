@@ -41,3 +41,13 @@ const trimStrEnd = str.trimEnd();
 console.log(trimStr);
 console.log(str.toLowerCase());
 console.log(str.toUpperCase());
+
+// Convert Number and Object to String
+const num = 123;
+console.log(num, num.toString());
+
+const obj = {
+    name: "Vishal",
+    course: "DSA with Vishal"
+};
+console.log(obj, JSON.stringify(obj));
