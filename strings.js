@@ -27,3 +27,6 @@ console.log(str.substring(6,30));
 console.log(str.slice(-10,-1));
 
 // Split and Join
+console.log(str.split(""));
+const subString = str.split((" "));
+console.log(subString.join(" "));
