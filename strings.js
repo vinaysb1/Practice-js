@@ -33,3 +33,11 @@ console.log(subString.join(" "));
 
 console.log(str.startsWith("vinay")); // true
 console.log(str.endsWith("developer.")); // true
+
+// Trim and Case Conversion
+const trimStr = str.trim();
+const trimStrStart = str.trimStart();
+const trimStrEnd = str.trimEnd();
+console.log(trimStr);
+console.log(str.toLowerCase());
+console.log(str.toUpperCase());
