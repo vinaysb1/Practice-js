@@ -21,3 +21,9 @@ console.log(firstName.localeCompare(anotherName1));
 const str = "vinay is best frontend developer.vinay is best developer.";
 console.log(str.replace("vinay","sanjay"));
 console.log(str.replaceAll("vinay","sanjay"));
+
+// Substring of a String
+console.log(str.substring(6,30));
+console.log(str.slice(-10,-1));
+
+// Split and Join
