@@ -30,3 +30,6 @@ console.log(str.slice(-10,-1));
 console.log(str.split(""));
 const subString = str.split((" "));
 console.log(subString.join(" "));
+
+console.log(str.startsWith("vinay")); // true
+console.log(str.endsWith("developer.")); // true
