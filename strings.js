@@ -57,3 +57,10 @@ const lastName = "Beelagi";
 console.log(firstName+lastName);
 console.log(`${firstName} ${lastName}is a Best Developer`)
 console.log(firstName.concat(lastName, " is a", " Best"));
+
+// Write a function that reverses a string. The input string is given as an array of characters s
+const s = ["h","e","l","l","o"]
+var  reverseString = function(s) {
+    return s.reverse();
+} 
+console.log(reverseString(s))
