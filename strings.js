@@ -59,8 +59,60 @@ console.log(`${firstName} ${lastName}is a Best Developer`)
 console.log(firstName.concat(lastName, " is a", " Best"));
 
 // Write a function that reverses a string. The input string is given as an array of characters s
-const s = ["h","e","l","l","o"]
-var  reverseString = function(s) {
-    return s.reverse();
-} 
-console.log(reverseString(s))
+// const s = ["h","e","l","l","o"]
+// var  reverseString = function(s) {
+//     return s.reverse();
+// } 
+// console.log(reverseString(s))
+
+var reverseString1 = function(s) {
+    for (let i = 0, j = s.length - 1; i < j; i++, j--) {
+        [s[i], s[j]] = [s[j], s[i]];
+    }
+    return s;
+}
+
+// Example usage
+let s = ['h', 'e', 'l', 'l', 'o'];
+console.log(reverseString1(s)); // Output: ['o', 'l', 'l', 'e', 'h']
+
+var isAnagram = function(s, t) {
+    // Step 1: Split and sort the strings
+    s = s.split("").sort();
+    t = t.split("").sort();
+
+    // Step 2: Check if the lengths are different
+    if (s.length !== t.length) {
+        return false;
+    }
+
+    // Step 3: Compare each character
+    for (var i = 0; i < s.length; i++) {
+        if (s[i] !== t[i]) {
+            return false;
+        }
+    }
+
+    // Step 4: Return true if all characters match
+    return true;
+};
+
+// Example usage
+console.log(isAnagram("anagram", "nagaram")); // Output: true
+console.log(isAnagram("rat", "car"));         // Output: false
+
+//using array of buckets -anagram
+var isAnagram = function(s, t) {
+    if (t.length !== s.length) return false;
+    const counts = [];
+    for (let c of s) {
+        let i = c.charCodeAt(0) - 'a'.charCodeAt(0);
+        counts[i] = (counts[i] || 0) + 1;
+    }
+    for (let c of t) {
+        let i = c.charCodeAt(0) - 'a'.charCodeAt(0);
+        if (!counts[i]) return false;
+        counts[i]--;
+    }
+    return true;
+};
