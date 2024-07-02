@@ -116,3 +116,23 @@ var isAnagram = function(s, t) {
     }
     return true;
 };
+
+//longest common prefix
+var longestCommonPrefix = function(strs){
+    if (!strs.length) return "";
+    let longestCommonPrefix = "";
+
+    for(let i=0;i<strs[0].length;i++){
+        if(strs[0]==="") return "";
+    
+        if(strs.every(str=>str[i]===strs[0][i])){
+            longestCommonPrefix += strs[0][i]
+        }else {
+            break;
+        }
+    }
+return longestCommonPrefix;
+}
+
+console.log(longestCommonPrefix(["flower", "flow", "flight"])); // Output: "fl"
+console.log(longestCommonPrefix(["dog", "racecar", "car"]));    // Output: ""
