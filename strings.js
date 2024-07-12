@@ -136,3 +136,42 @@ return longestCommonPrefix;
 
 console.log(longestCommonPrefix(["flower", "flow", "flight"])); // Output: "fl"
 console.log(longestCommonPrefix(["dog", "racecar", "car"]));    // Output: ""
+
+// length Of Last Word
+var lengthOfLastWord = function(s) {
+    return s.trim().split(" ")[s.trim().split(" ").length -1 ].length;
+ };
+//  let sentence = "Hello World";// console.log(lengthOfLastWord(sentence)); // Output: 5
+
+// sentence = "   fly me   to   the moon  ";// console.log(lengthOfLastWord(sentence)); // Output: 4
+
+// Merge Strings Alternately
+var mergeAlternately = function(word1,word2){
+    let maxlength = Math.max(word1.length,word2.length)
+    let res = []
+    for (let i=0;i<maxlength;i++){
+        res.push(word1[i])
+        res.push(word2[i])
+    }
+    return res.join("");
+}
+
+// approach-2
+var mergeAlternately1 = function(word1, word2) {
+    let maxlength = Math.max(word1.length, word2.length);
+    let res = [];
+    
+    for (let i = 0; i < maxlength; i++) {
+        if (i < word1.length) {
+            res.push(word1[i]);
+        }
+        if (i < word2.length) {
+            res.push(word2[i]);
+        }
+    }
+    
+    return res.join("");
+};
+
+console.log(mergeAlternately("abc", "pqr")); // Output: "apbqcr"
+console.log(mergeAlternately("ab", "pqrs")); // Output: "apbqrs"
