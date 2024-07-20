@@ -176,7 +176,7 @@ var mergeAlternately1 = function(word1, word2) {
 console.log(mergeAlternately("abc", "pqr")); // Output: "apbqcr"
 console.log(mergeAlternately("ab", "pqrs")); // Output: "apbqrs"
 
-//productExceptSelf
+//productExceptSelf aproach-1
 var productExceptSelf = function(nums) {
     const length = nums.length;
     const answer = new Array(length);
@@ -207,3 +207,30 @@ console.log(productExceptSelf(nums1)); // Output: [24, 12, 8, 6]
 
 const nums2 = [-1, 1, 0, -3, 3];
 console.log(productExceptSelf(nums2)); // Output: [0, 0, 9, 0, 0]
+
+// productExceptSelf aproach-2
+var productExceptSelf = function(nums) {
+    const length = nums.length;
+    const answer = new Array(length).fill(1);
+    
+    let leftProduct = 1;
+    for (let i = 0; i < length; i++) {
+        answer[i] *= leftProduct;
+        leftProduct *= nums[i];
+    }
+    
+    let rightProduct = 1;
+    for (let i = length - 1; i >= 0; i--) {
+        answer[i] *= rightProduct;
+        rightProduct *= nums[i];
+    }
+    
+    return answer;
+};
+
+// Example usage:
+const nums3 = [1, 2, 3, 4];
+console.log(productExceptSelf(nums3)); // Output: [24, 12, 8, 6]
+
+const nums4 = [-1, 1, 0, -3, 3];
+console.log(productExceptSelf(nums4)); // Output: [0, 0, 9, 0, 0]
