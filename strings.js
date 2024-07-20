@@ -234,3 +234,38 @@ console.log(productExceptSelf(nums3)); // Output: [24, 12, 8, 6]
 
 const nums4 = [-1, 1, 0, -3, 3];
 console.log(productExceptSelf(nums4)); // Output: [0, 0, 9, 0, 0]
+
+//  productExceptSelf aproach-3
+var productExceptSelf = function(nums) {
+    // Array to store all left multiplication
+    const left = new Array(nums.length);
+
+    // Array to store all right multiplication
+    const right = new Array(nums.length);
+
+    left[0] = 1;
+    for (let i = 1; i < nums.length; i++) {
+        left[i] = left[i - 1] * nums[i - 1];
+    }
+
+    right[nums.length - 1] = 1;
+    for (let i = nums.length - 2; i >= 0; i--) {
+        right[i] = right[i + 1] * nums[i + 1];
+    }
+
+    const ans = new Array(nums.length);
+    for (let i = 0; i < nums.length; i++) {
+        ans[i] = left[i] * right[i];
+    }
+
+    return ans;
+};
+
+// Example usage:
+const nums5 = [1, 2, 3, 4];
+console.log(productExceptSelf(nums5)); // Output: [24, 12, 8, 6]
+
+const nums6 = [-1, 1, 0, -3, 3];
+console.log(productExceptSelf(nums6)); // Output: [0, 0, 9, 0, 0]
+
+
