@@ -109,3 +109,18 @@ let nums8 = [2, 3, -2, 4];
 console.log(productExceptSelf(nums8))
 let nums7 = [-2, 0, -1];
 console.log(productExceptSelf(nums7))
+
+// remove duplicates
+function removeDuplicatesNew(nums) {
+    if (nums.length === 0) return 0;
+    let i = 0;
+  
+    for (let j = 1; j < nums.length; j++) {
+      if (nums[i] !== nums[j]) {
+        i++;
+        nums[i] = nums[j];
+      }
+    }
+  
+    return i + 1;
+  }
