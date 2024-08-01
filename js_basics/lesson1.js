@@ -34,3 +34,14 @@ console.log(canVote)
 let isMember = true;
 let discount = (isMember) ? 1:5;
 console.log(discount);
+
+//type of operand
+console.log(typeof 42);            // "number"
+console.log(typeof 'Hello');       // "string"
+console.log(typeof true);          // "boolean"
+console.log(typeof undefined);     // "undefined"
+console.log(typeof {name: 'Alice'}); // "object"
+console.log(typeof [1, 2, 3]);     // "object" (arrays are considered objects)
+console.log(typeof null);          // "object" (this is a historical quirk in JavaScript)
+console.log(typeof function(){});  // "function"
+console.log(typeof Symbol('id'));  // "symbol"
