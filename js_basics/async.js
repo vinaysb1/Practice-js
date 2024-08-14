@@ -57,3 +57,28 @@ const runProcess1 = async()=> {
     }
 };
 runProcess1();
+
+// eaxmple refference thefullstacktrainer
+let url ='https://jsonplaceholder.typicode.com/users/1';
+async function fetchData(){
+    let response_data = await fetch(url);
+    console.log(response_data.status)//ok
+    console.log(response_data.statusText);
+    if(response_data.status===200){
+        let data = await response_data.text();
+        console.log(data);//200
+    }
+}
+
+// example from odin project
+async function getPersonInfo(name) {
+    const people = await server.getPeople();
+    const person = people.find(perrson => {return person.name === name})
+    return person;    
+}
+
+// using try ,cath above function
+async function getPersonInfo1(name) {
+    const people = await server.getPeople();
+    
+}

@@ -13,13 +13,13 @@ function substract(x,y,cb1){
 }
 substract(6,3,display)
 
-const fun3 = function (value, cb1, cb2) {
-    if (value == "first") {
-        cb1(5, 6)
-    } else { cb2(10, 23) }
-}
-fun3("first", (a, b) => { console.log(a + b) }, (a, b) => { console.log(a + b) })
- fun3("second", (a, b) => { console.log(a + b) }, (a, b) => { console.log(a + b) })
+// const fun3 = function (value, cb1, cb2) {
+//     if (value == "first") {
+//         cb1(5, 6)
+//     } else { cb2(10, 23) }
+// }
+// fun3("first", (a, b) => { console.log(a + b) }, (a, b) => { console.log(a + b) })
+//  fun3("second", (a, b) => { console.log(a + b) }, (a, b) => { console.log(a + b) })
 
  const users = [
     { id: 1, username: 'GamerOne', achievements: ['First Blood', 'Puzzle Master'] },
@@ -113,3 +113,77 @@ function processData (data){
 console.log(data)
 }
 fetchData(processData);
+
+// example-3 
+function divide (a,b,cb6){
+    if(b=== 0){
+        console.log("error:not divide by zero")
+    } else {
+        let result = a/b;
+        cb6(null,result)
+    }
+}
+
+function getResult(error,result){
+if (error){
+    console.log(error)
+}
+else{
+    console.log(result)
+}
+}
+
+divide(20,5,getResult);
+divide(20,0,getResult);
+
+// function post(callback){
+//     fetch('https://jsonplaceholder.typicode.com/posts/2')
+//     .then(response =>{
+//         if(!response.ok){
+//             throw new Error('Network Problem')
+//         }
+//         return response.json()
+//     })
+//     .then(data=>{
+//         callback(null,data)
+//     })
+//     .catch(err=>{
+//         callback(err,null)
+//     })
+// }
+// post((err,data)=>{
+//     if(err){
+//         console.log(err)
+//     }
+//     if(data){
+//         console.log(data)
+//     }
+//     })
+
+    // Define the post function to return a Promise
+function post() {
+    return fetch('https://jsonplaceholder.typicode.com/posts/2')
+        .then(response => {
+            console.log(response)
+            if (!response.ok) {
+                throw new Error('Network Problem');
+            }
+            return response.json();
+        });
+}
+
+// Call the post function and handle the Promise
+post()
+    .then(data => {
+        console.log(data); // Handle the data
+    })
+    .catch(err => {
+        console.log(err); // Handle the error
+    });
+
+    const fun3 = async () => {
+        let res =  await fetch('https://jsonplaceholder.typicode.com/todos/1')
+        console.log("inside fun3 ")
+        return res.json();
+    }
+    fun3().then(value => console.log(value))

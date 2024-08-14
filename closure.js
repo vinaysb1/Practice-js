@@ -1,19 +1,30 @@
-function init() {
-    var name = ‘Mozilla’; // name is a local variable created by init
-    function displayName() { // displayName() is the inner function, a closure
-    alert(name); // use variable declared in the parent function
+// example1
+function outerFunction() {
+    const outerVar = 'I am outer';
+
+    function innerFunction() {
+        console.log(this); 
+        console.log(outerVar); 
     }
-    displayName();
+
+    return innerFunction;
+}
+
+const employee = {temp:outerFunction()}
+const temp = employee.temp;
+temp()
+
+// exampl-2
+const getBalance = () => {
+    let balance = 10000;
+
+    return {
+        add: (value) => { balance = balance + value },
+        getBalance: () => balance
     }
-    init();
-    
-    // Code with Closure: 
-    
-    function makeFunc() {
-    var name = ‘Mozilla’;
-    function displayName() {
-    alert(name);
-    }
-    return displayName;
-    }
-    var myFunc = makeFunc();
+
+}
+const obj = getBalance();
+console.log(obj.getBalance())
+obj.add(5000)
+console.log(obj.getBalance())

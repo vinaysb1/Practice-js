@@ -48,8 +48,9 @@ const obj = {
 };
 console.log(obj,JSON.stringify(obj));
 
-// concarenate strings
+// concarenate strings  
 const lastName = "Beelagi";
 console.log(firstname + lastName)
 console.log(`${firstname} ${lastName} is a Developer`)
 console.log(firstname .concat(lastName, " is a " , "good"));
+

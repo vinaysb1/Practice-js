@@ -1,25 +1,19 @@
-// object literals
-let person = {
-    firstName:"viraj",lastName:"beelagi",age:1
+let obj1 = {
+  name: "venky",
+  age: 25,
+  detail: function () {
+    return `${this.name} ${this.age}`;
+  }
+};
+function Person(name,age) {
+    this.name = name;
+    this.age = age;
 }
+const person1 = new Person("vinay",35)
+const person2 = new Person("viraj",2)
+console.log(person1.name,person1.age)
 
-//constructor function
-function Person(firstName,age){
-    this.firstName = firstName,
-    this.age = age
-}
-let person1 = new Person("yash",40)
-let person2 = new Person("veer",35)
-
-//class syntax
-class Person {
-    constructor(firstName,lastName,age){
-        this.firstName = firstName,
-        this.lastName = lastName,
-        this.age = age
-    }     
-}
-function Person(firstName,age){
-    this.firstName = firstName
-    this.age = age
-}
+let sum  = (function(a,b) {
+    return a+b
+})(3,6)
+console.log(sum);
