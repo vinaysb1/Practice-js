@@ -778,4 +778,12 @@ ORDER BY first_name;
 
 DELETE FROM contacts
 ORDER BY first_name
-LIMIT 3;;
+LIMIT 3;
+
+--  MySQL subquery in the WHERE clause
+select
+customerNumber,checkNumber,amount
+from
+payments
+where
+amount=(select MAX(amount) from payments)
