@@ -787,3 +787,12 @@ from
 payments
 where
 amount=(select MAX(amount) from payments)
+
+
+--  MySQL subquery in the WHERE clause
+select
+customerNumber,checkNumber,amount
+from
+payments
+where
+amount=(select MAX(amount) from payments)
